@@ -774,8 +774,245 @@ body {
         <!-- <script src="js/custom.js"></script> --> 
 
         <script>
+<<<<<<< HEAD
             // Helper function to generate a unique ID
             const generateUniqueId = () => Math.random().toString(36).substring(2, 9);
+=======
+        // Product data
+        const products = [
+            {
+                id: 'bb1',
+                category: 'bb',
+                name: 'CLINIQUE',
+                title: 'Moisture Surge™ CC Cream Hydrating Color Corrector Broad Spectrum SPF 30',
+                price: 44.00,
+                image: 'img/bb/1.png',
+                description: 'A hydrating color corrector with SPF 30 protection that instantly hydrates while perfecting skin tone.',
+                details: 'Oil-free formula provides sheer-to-medium coverage while improving skin hydration over time. Contains hyaluronic acid and aloe water for 24-hour hydration.'
+            },
+            {
+                id: 'bb2',
+                category: 'bb',
+                name: 'IT Cosmetics',
+                title: 'CC+ Cream Illumination with SPF 50+',
+                price: 47.00,
+                image: 'img/bb/2.png',
+                description: 'Illuminating color corrector with SPF 50+ that brightens skin while providing full coverage.',
+                details: 'Infused with hydrolyzed collagen, peptides, niacin, hyaluronic acid, vitamins and antioxidants. Provides anti-aging benefits while covering imperfections.'
+            },
+            {
+                id: 'bb3',
+                category: 'bb',
+                name: 'tarte',
+                title: 'mini BB blur natural matte tinted moisturizer Broad Spectrum SPF 30 Sunscreen',
+                price: 18.00,
+                image: 'img/bb/3.png',
+                description: 'Mini matte-finish BB cream with SPF 30 that blurs imperfections.',
+                details: 'Oil-free formula minimizes pores and shine while providing natural-looking coverage. Contains Amazonian clay to balance skin.'
+            },
+            {
+                id: 'bb4',
+                category: 'bb',
+                name: 'Laura Mercier',
+                title: 'Mini Long-Wear Tinted Moisturizer Natural Dewy SPF 30 with Hyaluronic Acid',
+                price: 25.00,
+                image: 'img/bb/4.png',
+                description: 'Lightweight tinted moisturizer with a natural dewy finish and SPF 30.',
+                details: 'Contains hyaluronic acid for hydration and provides buildable coverage with a radiant finish.'
+            },
+            {
+                id: 'bb5',
+                category: 'bb',
+                name: 'ONE/SIZE by Patrick Starrr ',
+                title: 'Turn Up the Base Blurring Foundation',
+                price: 17.50,
+                image: 'img/bb/5.png',
+                description: 'Lightweight tinted moisturizer with a natural dewy finish and SPF 30.',
+                details: 'Contains hyaluronic acid for hydration and provides buildable coverage with a radiant finish.'
+            },
+            {
+                id: 'bb6',
+                category: 'bb',
+                name: 'Summer Fridays ',
+                title: 'Sheer Skin Tint with Hyaluronic Acid + Squalane',
+                price: 17.50,
+                image: 'img/bb/6.png',
+                description: 'Lightweight tinted moisturizer with a natural dewy finish and SPF 30.',
+                details: 'Contains hyaluronic acid for hydration and provides buildable coverage with a radiant finish.'
+            },
+            {
+                id: 'bb7',
+                category: 'bb',
+                name: 'IT Cosmetics  ',
+                title: 'CC+ Cream Natural Matte Foundation with SPF 40',
+                price: 47.00,
+                image: 'img/bb/6.png',
+                description: 'Lightweight tinted moisturizer with a natural dewy finish and SPF 30.',
+                details: 'Contains hyaluronic acid for hydration and provides buildable coverage with a radiant finish.'
+            },
+            {
+                id: 'concealer1',
+                category: 'concealer',
+                name: 'Tower 28 Beauty',
+                title: 'Swipe All-Over Hydrating Serum Concealer',
+                price: 22.00,
+                image: 'img/conceler/1.png',
+                description: 'Hydrating serum concealer that provides buildable coverage.',
+                details: 'Clean formula with squalane and green tea extract that hydrates while covering dark circles and imperfections.'
+            },
+            {
+                id: 'concealer2',
+                category: 'concealer',
+                name: 'Hourglass',
+                title: 'Vanish™ Airbrush Concealer',
+                price: 38.00,
+                image: 'img/conceler/2.png',
+                description: 'Full-coverage concealer with an airbrush finish.',
+                details: 'Cream-to-powder formula provides waterproof coverage that lasts 16 hours. Blurs imperfections without creasing.'
+            },
+            {
+                id: 'concealer3',
+                category: 'concealer',
+                name: 'NARS',
+                title: 'Radiant Creamy Concealer with Medium Coverage',
+                price: 32.00,
+                image: 'img/conceler/3.png',
+                description: 'Creamy concealer that brightens and corrects with medium coverage.',
+                details: 'Light-diffusing technology minimizes fine lines and wrinkles while providing natural-looking coverage.'
+            },
+            {
+                id: 'concealer4',
+                category: 'concealer',
+                name: 'SEPHORA COLLECTION ',
+                title: 'Best Skin Ever Multi-Use Hydrating Glow Concealer',
+                price: 16.00,
+                image: 'img/conceler/4.png',
+                description: 'Creamy concealer that brightens and corrects with medium coverage.',
+                details: 'Light-diffusing technology minimizes fine lines and wrinkles while providing natural-looking coverage.'
+            },
+            {
+                id: 'concealer4',
+                category: 'concealer',
+                name: 'SEPHORA COLLECTION ',
+                title: 'Best Skin Ever Multi-Use Hydrating Glow Concealer',
+                price: 16.00,
+                image: 'img/conceler/5.png',
+                description: 'Creamy concealer that brightens and corrects with medium coverage.',
+                details: 'Light-diffusing technology minimizes fine lines and wrinkles while providing natural-looking coverage.'
+            },
+            {
+                id: 'face1',
+                category: 'face',
+                name: 'Dieux',
+                title: 'Instant Angel Lipid & Peptide-Rich Moisturizer + Barrier Repair',
+                price: 42.00,
+                image: 'img/face/1.png',
+                description: 'Rich moisturizer that repairs skin barrier with lipids and peptides.',
+                details: 'Contains ceramides, cholesterol, and fatty acids to restore skin barrier. Peptides help with collagen production.'
+            },
+            {
+                id: 'face2',
+                category: 'face',
+                name: 'Dieux',
+                title: 'barrier+ Strengthening and Moisturizing Triple Lipid-Peptide Refillable Cream with B-L3',
+                price: 54.00,
+                image: 'img/face/2.png',
+                description: 'Refillable barrier repair cream with triple lipid technology.',
+                details: 'Clinically shown to strengthen skin barrier in 1 week. Contains patented B-L3 complex for enhanced hydration.'
+            },
+            {
+                id: 'face3',
+                category: 'face',
+                name: 'Tower 28 Beauty',
+                title: 'Natural Moisturizing Factors + Hyaluronic Acid Daily Moisturizer',
+                price: 14.00,
+                image: 'img/face/3.png',
+                description: 'Daily moisturizer that soothes redness and repairs skin barrier.',
+                details: 'Hypochlorous acid formula calms irritation while ceramides and fatty acids strengthen the skin barrier.'
+            },
+            {
+                id: 'face4',
+                category: 'face',
+                name: 'Tower 28 Beauty',
+                title: 'Natural Moisturizing Factors + Hyaluronic Acid Daily Moisturizer',
+                price: 14.00,
+                image: 'img/face/4.png',
+                description: 'Daily moisturizer that soothes redness and repairs skin barrier.',
+                details: 'Hypochlorous acid formula calms irritation while ceramides and fatty acids strengthen the skin barrier.'
+            },
+            {
+                id: 'face5',
+                category: 'face',
+                name: 'The Ordinary  ',
+                title: 'Hyaluronic Acid 2% + B5 Hydrating Serum with Ceramides',
+                price: 9.00,
+                image: 'img/face/5.png',
+                description: 'Daily moisturizer that soothes redness and repairs skin barrier.',
+                details: 'Hypochlorous acid formula calms irritation while ceramides and fatty acids strengthen the skin barrier.'
+            },
+            {
+                id: 'night1',
+                category: 'night',
+                name: 'SEPHORA COLLECTION',
+                title: 'Overnight Hydrating Mask',
+                price: 8.00,
+                image: 'img/night/1.png',
+                description: 'Affordable overnight mask that deeply hydrates skin.',
+                details: 'Lightweight gel-cream formula with hyaluronic acid provides intense hydration while you sleep.'
+            },
+            {
+                id: 'night2',
+                category: 'night',
+                name: 'fresh',
+                title: 'Lotus Youth Preserve Radiance Renewal Night Cream',
+                price: 62.00,
+                image: 'img/night/2.png',
+                description: 'Night cream that renews radiance while you sleep.',
+                details: 'Contains super lotus extract and vitamin E to help skin recover overnight. Leaves skin glowing by morning.'
+            },
+            {
+                id: 'night3',
+                category: 'night',
+                name: 'Tatcha',
+                title: 'Indigo Overnight Repair Redness Reducing Barrier Cream',
+                price: 92.00,
+                image: 'img/night/3.png',
+                description: 'Luxury overnight cream that reduces redness and repairs skin barrier.',
+                details: 'Japanese indigo extract soothes irritation while colloidal oatmeal and squalane deeply nourish and repair.'
+            },
+            {
+                id: 'night4',
+                category: 'night',
+                name: 'Fenty Beauty by Rihanna ',
+                title: 'Instant Reset Brightening Overnight Recovery Gel-Cream With Niacinamide + Kalahari Melon Oil ',
+                price: 46.00,
+                image: 'img/night/4.png',
+                description: 'Luxury overnight cream that reduces redness and repairs skin barrier.',
+                details: 'Japanese indigo extract soothes irritation while colloidal oatmeal and squalane deeply nourish and repair.'
+            },
+            {
+                id: 'night5',
+                category: 'night',
+                name: 'ALPYN  ',
+                title: 'Firming, Plumping & Brightening Moisturizer with Bakuchiol & Ceramides ',
+                price: 60.00,
+                image: 'img/night/5.png',
+                description: 'Luxury overnight cream that reduces redness and repairs skin barrier.',
+                details: 'Japanese indigo extract soothes irritation while colloidal oatmeal and squalane deeply nourish and repair.'
+            },
+            {
+                id: 'night6',
+                category: 'night',
+                name: ' The INKEY List  ',
+                title: 'C-50 Blemish Night Treatment',
+                price: 16.00,
+                image: 'img/night/6.png',
+                description: 'Luxury overnight cream that reduces redness and repairs skin barrier.',
+                details: 'Japanese indigo extract soothes irritation while colloidal oatmeal and squalane deeply nourish and repair.'
+            }
+    
+        ];
+>>>>>>> 4cdb451131f5182a7cabc86f23604f331df02395
 
             // Product data - Modified to include isBoxProduct and boxContents
             let products = [
