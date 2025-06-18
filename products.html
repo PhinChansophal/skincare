@@ -12,114 +12,446 @@
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;300;400;700;900&display=swap" rel="stylesheet">
-        <link href="css/bootstrap.min.css" rel="stylesheet">
-        <link href="css/bootstrap-icons.css" rel="stylesheet">
-        <link rel="stylesheet" href="css/slick.css"/>
-        <link href="css/tooplate-little-fashion.css" rel="stylesheet">
-        <style>
-            /* Additional custom styles */
-            .product-thumb {
-                transition: transform 0.3s ease;
-            }
-            .product-thumb:hover {
-                transform: translateY(-5px);
-            }
-            .product-image {
-                height: 300px;
-                object-fit: contain;
-                background-color: #f8f9fa;
-                padding: 20px;
-            }
-            .filter-btn.active {
-                background-color: #212529;
-                color: white;
-            }
-            .bi-bag[data-count]::after {
-                content: attr(data-count);
-                position: absolute;
-                top: -5px;
-                right: -5px;
-                background: #dc3545;
-                color: white;
-                border-radius: 50%;
-                width: 18px;
-                height: 18px;
-                font-size: 10px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-            }
-            .product-icon {
-                color: #dc3545;
-                font-size: 1.2rem;
-            }
-            .product-icon:hover {
-                color: #c82333;
-            }
-            .product-alert {
-                background-color: #ffc107;
-                color: #212529;
-                padding: 2px 8px;
-                border-radius: 4px;
-                font-size: 0.8rem;
-                font-weight: bold;
-            }
-            .payment-method {
-                border: 1px solid #dee2e6;
-                border-radius: 5px;
-                padding: 10px;
-                margin-bottom: 10px;
-                cursor: pointer;
-            }
-            .payment-method:hover {
-                border-color: #0d6efd;
-            }
-            .payment-method.active {
-                border-color: #0d6efd;
-                background-color: #f0f7ff;
-            }
-            /* Cart Modal Styles */
-            .cart-item-img {
-                width: 80px;
-                height: 80px;
-                object-fit: contain;
-                background-color: #f8f9fa;
-                padding: 10px;
-                border-radius: 5px;
-            }
-            .quantity-control {
-                display: flex;
-                align-items: center;
-            }
-            .quantity-btn {
-                width: 30px;
-                height: 30px;
-                display: flex;
-                align-items: center;
-                justify-content: center;
-                border: 1px solid #dee2e6;
-                background-color: #f8f9fa;
-                cursor: pointer;
-            }
-            .quantity-input {
-                width: 50px;
-                height: 30px;
-                text-align: center;
-                border: 1px solid #dee2e6;
-                margin: 0 5px;
-            }
-            .empty-cart {
-                text-align: center;
-                padding: 40px 0;
-            }
-            .empty-cart i {
-                font-size: 3rem;
-                color: #6c757d;
-                margin-bottom: 20px;
-            }
-        </style>
-    </head>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" xintegrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+        <!-- Re-using existing custom styles if they were meant for Bootstrap layout -->
     
+        <style>
+ /* Import Inter font from Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+
+/* General Body and Font Styling */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #f7fafc; /* Light gray background */
+    color: #333;
+    line-height: 1.6;
+}
+
+/* Header and Navigation */
+.site-header {
+    background-color: #f8f9fa;
+    padding: 80px 0;
+    text-align: center;
+}
+
+.site-header h1 {
+    font-size: 3rem;
+    font-weight: 900;
+}
+
+.site-header #page-header-primary {
+    color: #e91e63; /* A vibrant pink for emphasis */
+}
+
+.navbar {
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+.navbar-brand strong {
+    color: #333;
+}
+
+.navbar-brand span {
+    color: #e91e63; /* Matching the header primary color */
+}
+
+.nav-link {
+    font-weight: 500;
+    color: #555;
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover,
+.nav-link.active {
+    color: #e91e63;
+}
+
+.custom-icon {
+    font-size: 1.5rem;
+    color: #333;
+    transition: color 0.3s ease;
+}
+
+.custom-icon:hover {
+    color: #e91e63;
+}
+
+/* Cart Icon Badge */
+.bi-bag[data-count]::after {
+    content: attr(data-count);
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: #e91e63; /* Pink for cart count */
+    color: white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    font-size: 11px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+/* Products Section */
+.products {
+    padding-top: 80px;
+    padding-bottom: 80px;
+}
+
+.product-thumb {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    overflow: hidden;
+    margin-bottom: 30px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Ensures all cards are same height */
+}
+
+.product-thumb:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+}
+
+.product-image-wrap {
+    display: block;
+    height: 250px; /* Fixed height for image container */
+    background-color: #f8f9fa;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+}
+
+.product-image {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: contain; /* Ensures image fits without cropping */
+    border-radius: 8px;
+}
+
+.product-info {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    flex-grow: 1;
+}
+
+.product-title-wrap {
+    flex-grow: 1;
+    padding-right: 15px;
+}
+
+.product-title {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.product-title-link {
+    color: #333;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.product-title-link:hover {
+    color: #e91e63;
+}
+
+.product-p {
+    font-size: 0.9rem;
+    color: #777;
+    margin-bottom: 5px;
+}
+
+.product-price-wrap {
+    text-align: right;
+}
+
+.product-price {
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #28a745 !important; /* Bootstrap success color */
+}
+
+.add-to-cart-btn,
+.edit-product-btn,
+.delete-product-btn {
+    font-size: 0.85rem;
+    padding: 8px 12px;
+    border-radius: 8px;
+}
+
+/* Filter Buttons */
+.filter-btn {
+    border-radius: 20px !important; /* More rounded */
+    margin: 5px;
+    padding: 8px 18px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.filter-btn.active {
+    background-color: #e91e63;
+    border-color: #e91e63;
+    color: white;
+    box-shadow: 0 4px 10px rgba(233, 30, 99, 0.3);
+}
+
+.filter-btn:hover:not(.active) {
+    background-color: #f8e1e7;
+    border-color: #f8e1e7;
+    color: #e91e63;
+}
+
+/* Product Detail View */
+.product-detail-view .card {
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.product-detail-view .product-image {
+    height: auto; /* Allow height to adjust */
+    max-height: 400px;
+    object-fit: contain;
+    padding: 30px;
+    background-color: #f8f9fa;
+}
+
+.product-detail-view .card-body {
+    padding: 30px;
+}
+
+.product-detail-view .card-title {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #333;
+}
+
+.product-detail-view .card-text.text-muted {
+    font-size: 1.1rem;
+}
+
+.product-detail-view .card-text.fs-4 {
+    font-weight: 700;
+    color: #28a745 !important;
+}
+
+.product-detail-view .badge {
+    font-size: 0.9rem;
+    padding: 6px 12px;
+}
+
+/* Footer */
+.site-footer {
+    background-color: #212529;
+    color: #bbb;
+    padding: 60px 0 30px 0;
+}
+
+.site-footer h4, .site-footer h5 {
+    color: #fff;
+    font-weight: 600;
+    margin-bottom: 25px;
+}
+
+.site-footer a {
+    color: #bbb;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.site-footer a:hover {
+    color: #e91e63;
+}
+
+.footer-menu-item {
+    list-style: none;
+    margin-right: 20px;
+    margin-bottom: 10px;
+}
+
+.social-icon {
+    display: flex;
+    gap: 15px;
+    padding: 0;
+    margin: 0;
+}
+
+.social-icon-link {
+    width: 40px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border-radius: 50%;
+    background-color: rgba(255,255,255,0.1);
+    color: white;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.social-icon-link:hover {
+    background-color: #e91e63;
+    color: white;
+}
+
+/* Cart Modal Specifics */
+.cart-item-img {
+    width: 90px;
+    height: 90px;
+    object-fit: contain;
+    background-color: #f8f9fa;
+    padding: 8px;
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+
+.quantity-control {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.quantity-btn {
+    width: 35px;
+    height: 35px;
+    border-radius: 8px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f0f0f0;
+    border: 1px solid #ddd;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.quantity-btn:hover {
+    background-color: #e0e0e0;
+}
+
+.quantity-input {
+    width: 60px;
+    height: 35px;
+    text-align: center;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    -moz-appearance: textfield; /* Hide arrows on Firefox */
+}
+/* Hide arrows for Chrome, Safari, Edge */
+.quantity-input::-webkit-outer-spin-button,
+.quantity-input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.remove-from-cart-btn {
+    padding: 5px 10px;
+    border-radius: 8px;
+}
+
+.empty-cart {
+    padding: 50px 0;
+    font-size: 1.1rem;
+    color: #6c757d;
+}
+
+.empty-cart i {
+    font-size: 4rem;
+    color: #a0a0a0;
+    margin-bottom: 25px;
+}
+
+.empty-cart h5 {
+    font-weight: 600;
+    color: #444;
+}
+
+/* Custom Modal Styles (Confirmation & Password) */
+.custom-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1050; /* Above Bootstrap modals */
+}
+
+.custom-modal-content {
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    animation: fadeIn 0.3s ease-out;
+}
+
+.custom-modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 25px;
+}
+
+.custom-modal-button {
+    padding: 12px 25px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    border: none;
+}
+
+.custom-modal-button.confirm {
+    background-color: #e91e63; /* Pink confirm button */
+    color: white;
+}
+
+.custom-modal-button.confirm:hover {
+    background-color: #d81b60;
+    transform: translateY(-2px);
+}
+
+.custom-modal-button.cancel {
+    background-color: #e0e0e0; /* Light gray cancel button */
+    color: #333;
+}
+
+.custom-modal-button.cancel:hover {
+    background-color: #d0d0d0;
+    transform: translateY(-2px);
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* Preloader */
+.preloader {
+    display: none !important; /* Hide it since it's an overlay and might not be fully functional in this environment */
+}
+
+/* Custom style for box product badge */
+.bg-purple-700 {
+    background-color: #6d28d9 !important; /* A nice purple */
+}
+
+
+        </style>    
     <body>
         <section class="preloader">
             <div class="spinner">
@@ -134,7 +466,7 @@
                         <span class="navbar-toggler-icon"></span>
                     </button>
 
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="#">
                         <strong><span>Skin</span>Care</strong>
                     </a>
 
@@ -149,10 +481,10 @@
                                 <a class="nav-link" href="index.html">Home</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="about.html">Story</a>
+                                <a class="nav-link" href="about.html">About</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link active" href="products.html">Products</a>
+                                <a class="nav-link active" href="products.html" id="navProductsLink">Products</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="faq.html">FAQs</a>
@@ -175,21 +507,29 @@
                     <div class="row">
                         <div class="col-lg-10 col-12">
                             <h1>
-                                <span class="d-block text-primary">Premium</span>
-                                <span class="d-block text-dark">Skincare Collection</span>
+                                <span class="d-block text-primary" id="page-header-primary">Premium</span>
+                                <span class="d-block text-dark" id="page-header-secondary">Skincare Collection</span>
                             </h1>
                         </div>
                     </div>
                 </div>
             </header>
 
-            <section class="products section-padding">
+            <section class="products section-padding" id="main-product-section">
                 <div class="container">
-                    <!-- Search and Filter -->
-                    <div class="row mb-5">
+                    <!-- Admin Mode Toggle & Actions -->
+                    <div class="row mb-4">
+                        <div class="col-12 text-center">
+                            <button id="toggle-admin-mode-btn" class="btn btn-dark btn-lg me-3">Switch to Admin View</button>
+                            <button id="add-new-product-btn" class="btn btn-success btn-lg d-none">Add New Product</button>
+                        </div>
+                    </div>
+
+                    <!-- Search and Filter (User View Only) -->
+                    <div class="row mb-5" id="user-view-controls">
                         <div class="col-md-6 mb-3">
                             <div class="input-group">
-                                <input type="text" class="form-control" id="productSearch" placeholder="Search for products..." aria-label="Search for products">
+                                <input type="text" class="form-control" id="productSearch" placeholder="Search for products..." aria-label="Search for products...">
                                 <button class="btn btn-outline-secondary" type="button" id="searchButton">
                                     <i class="bi bi-search"></i>
                                 </button>
@@ -205,14 +545,44 @@
                             </div>
                         </div>
                     </div>
-            
+                    
                     <!-- Product List -->
                     <div class="row product-list" id="productList">
-                        <div class="col-12">
-                            <h2 class="mb-5">Our Products</h2>
+                        <div class="col-12" id="products-list-header-col">
+                            <h2 class="mb-5" id="products-list-title">Our Products</h2>
                         </div>
-            
-                        <!-- Products will be dynamically inserted here -->
+                        <!-- Products will be dynamically inserted here by JavaScript -->
+                    </div>
+
+                    <!-- Product Detail View (Hidden by default) -->
+                    <div class="row product-detail-view d-none" id="productDetailView">
+                        <div class="col-lg-8 mx-auto">
+                            <div class="card shadow-lg mb-5">
+                                <div class="row g-0">
+                                    <div class="col-md-6">
+                                        <img id="detail-image" src="" class="img-fluid rounded-start product-image" alt="Product Image">
+                                    </div>
+                                    <div class="col-md-6 d-flex flex-column">
+                                        <div class="card-body flex-grow-1">
+                                            <h2 class="card-title h3" id="detail-name"></h2>
+                                            <p class="card-text text-muted" id="detail-category"></p>
+                                            <p class="card-text fs-4 text-success" id="detail-price"></p>
+                                            <div id="detail-box-product-info" class="mb-3 d-none">
+                                                <span class="badge bg-purple-700 text-white rounded-pill px-3 py-2">Box Product</span>
+                                                <p class="text-muted mt-2 small" id="detail-box-contents"></p>
+                                            </div>
+                                            <p class="card-text" id="detail-description"></p>
+                                            <p class="card-text" id="detail-details"></p>
+                                            <p class="card-text small text-warning" id="detail-stock-status"></p>
+                                        </div>
+                                        <div class="card-footer bg-white border-0 d-flex justify-content-end align-items-center">
+                                            <button class="btn btn-primary me-2" id="add-to-cart-detail-btn">Add to Cart</button>
+                                            <button class="btn btn-outline-secondary" id="back-from-detail-btn">Back to Products</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -222,20 +592,20 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-3 col-10 me-auto mb-4">
-                        <h4 class="text-white mb-3"><a href="index.html">Skin</a>Care</h4>
+                        <h4 class="text-white mb-3"><a href="#">Skin</a>Care</h4>
                         <p class="copyright-text text-muted mt-lg-5 mb-4 mb-lg-0">Copyright © 2023 <strong>SkinCare</strong></p>
                         <br>
-                        <p class="copyright-text">Designed by <a href="https://www.tooplate.com/" target="_blank">Tooplate</a></p>
+                        <p class="copyright-text">Designed by <a href="https://www.tooplate.com/" target="_blank">A5</a></p>
                     </div>
 
                     <div class="col-lg-5 col-8">
                         <h5 class="text-white mb-3">Sitemap</h5>
                         <ul class="footer-menu d-flex flex-wrap">
-                            <li class="footer-menu-item"><a href="about.html" class="footer-menu-link">Story</a></li>
-                            <li class="footer-menu-item"><a href="products.html" class="footer-menu-link">Products</a></li>
+                            <li class="footer-menu-item"><a href="#" class="footer-menu-link">Story</a></li>
+                            <li class="footer-menu-item"><a href="#" class="footer-menu-link">Products</a></li>
                             <li class="footer-menu-item"><a href="#" class="footer-menu-link">Privacy policy</a></li>
-                            <li class="footer-menu-item"><a href="faq.html" class="footer-menu-link">FAQs</a></li>
-                            <li class="footer-menu-item"><a href="contact.html" class="footer-menu-link">Contact</a></li>
+                            <li class="footer-menu-item"><a href="#" class="footer-menu-link">FAQs</a></li>
+                            <li class="footer-menu-item"><a href="#" class="footer-menu-link">Contact</a></li>
                         </ul>
                     </div>
 
@@ -294,786 +664,925 @@
             </div>
         </div>
 
-        <!-- Payment Modal -->
-        <div class="modal fade" id="paymentModal" tabindex="-1" aria-labelledby="paymentModalLabel" aria-hidden="true">
+        <!-- Product Form Modal (for Add/Edit Products) -->
+        <div class="modal fade" id="productFormModal" tabindex="-1" aria-labelledby="productFormModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="paymentModalLabel">Complete Your Purchase</h5>
+                        <h5 class="modal-title" id="productFormModalLabel">Add New Product</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <div id="paymentItems">
-                            <!-- Cart items will be displayed here -->
-                        </div>
-                        <hr>
-                        <div class="d-flex justify-content-between">
-                            <h5>Total:</h5>
-                            <h5 id="paymentTotal">$0.00</h5>
-                        </div>
-                        
-                        <h5 class="mt-4">Shipping Information</h5>
-                        <form id="shippingForm" class="mb-4">
+                        <form id="productForm">
+                            <input type="hidden" id="product-id">
+                            <div class="mb-3">
+                                <label for="product-name" class="form-label">Product Name:</label>
+                                <input type="text" class="form-control" id="product-name" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="product-title" class="form-label">Product Title (Full Description):</label>
+                                <input type="text" class="form-control" id="product-title" required>
+                            </div>
+                            <div class="mb-3">
+                                <label for="product-description" class="form-label">Short Description:</label>
+                                <textarea class="form-control" id="product-description" rows="3" required></textarea>
+                            </div>
+                            <div class="mb-3">
+                                <label for="product-details" class="form-label">Detailed Description:</label>
+                                <textarea class="form-control" id="product-details" rows="5"></textarea>
+                            </div>
                             <div class="row">
                                 <div class="col-md-6 mb-3">
-                                    <label for="firstName" class="form-label">First Name</label>
-                                    <input type="text" class="form-control" id="firstName" required>
+                                    <label for="product-price" class="form-label">Price ($):</label>
+                                    <input type="number" class="form-control" id="product-price" step="0.01" min="0" required>
                                 </div>
                                 <div class="col-md-6 mb-3">
-                                    <label for="lastName" class="form-label">Last Name</label>
-                                    <input type="text" class="form-control" id="lastName" required>
+                                    <label for="product-stock" class="form-label">Stock:</label>
+                                    <input type="number" class="form-control" id="product-stock" min="0" required>
                                 </div>
                             </div>
                             <div class="mb-3">
-                                <label for="address" class="form-label">Address</label>
-                                <input type="text" class="form-control" id="address" required>
+                                <label for="product-image" class="form-label">Image URL:</label>
+                                <input type="text" class="form-control" id="product-image" placeholder="e.g., img/face/1.png">
                             </div>
-                            <div class="row">
-                                <div class="col-md-6 mb-3">
-                                    <label for="city" class="form-label">City</label>
-                                    <input type="text" class="form-control" id="city" required>
-                                </div>
-                                <div class="col-md-3 mb-3">
-                                    <label for="state" class="form-label">State</label>
-                                    <input type="text" class="form-control" id="state" required>
-                                </div>
-                                <div class="col-md-3 mb-3">
-                                    <label for="zip" class="form-label">ZIP</label>
-                                    <input type="text" class="form-control" id="zip" required>
-                                </div>
+                            <div class="mb-3">
+                                <label for="product-category" class="form-label">Category:</label>
+                                <select class="form-select" id="product-category" required>
+                                    <option value="">Select a category</option>
+                                    <option value="bb">BB & CC Cream</option>
+                                    <option value="concealer">Concealer</option>
+                                    <option value="face">Face Creams</option>
+                                    <option value="night">Night Creams</option>
+                                    <!-- Add more categories as needed -->
+                                </select>
+                            </div>
+                            
+                            <!-- Box Product Toggle -->
+                            <div class="form-check mb-3">
+                                <input class="form-check-input" type="checkbox" id="is-box-product">
+                                <label class="form-check-label" for="is-box-product">
+                                    Is this a Box Product?
+                                </label>
+                            </div>
+
+                            <!-- Box Contents Input (conditionally rendered) -->
+                            <div id="box-contents-group" class="mb-3 d-none">
+                                <label for="box-contents" class="form-label">Box Contents (comma-separated product IDs):</label>
+                                <textarea class="form-control" id="box-contents" rows="3" placeholder="e.g., bb1, concealer2, face3"></textarea>
+                                <small class="form-text text-muted">Enter the IDs of products included in this box, separated by commas.</small>
+                            </div>
+
+                            <div class="d-grid gap-2 mt-4">
+                                <button type="submit" class="btn btn-primary" id="saveProductBtn">Save Product</button>
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
                             </div>
                         </form>
-                        
-                        <h5 class="mb-3">Payment Method</h5>
-                        <div class="mb-4">
-                            <div class="form-check payment-method mb-2 active" id="creditCardOption">
-                                <input class="form-check-input" type="radio" name="paymentMethod" id="creditCard" checked>
-                                <label class="form-check-label" for="creditCard">
-                                    Credit/Debit Card
-                                </label>
-                            </div>
-                            <div class="form-check payment-method" id="paypalOption">
-                                <input class="form-check-input" type="radio" name="paymentMethod" id="paypal">
-                                <label class="form-check-label" for="paypal">
-                                    PayPal
-                                </label>
-                            </div>
-                        </div>
-                        
-                        <div id="creditCardForm">
-                            <form id="paymentForm">
-                                <div class="mb-3">
-                                    <label for="cardNumber" class="form-label">Card Number</label>
-                                    <input type="text" class="form-control" id="cardNumber" placeholder="1234 5678 9012 3456" required>
-                                </div>
-                                <div class="row mb-3">
-                                    <div class="col-md-6">
-                                        <label for="expiryDate" class="form-label">Expiry Date</label>
-                                        <input type="text" class="form-control" id="expiryDate" placeholder="MM/YY" required>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <label for="cvv" class="form-label">CVV</label>
-                                        <input type="text" class="form-control" id="cvv" placeholder="123" required>
-                                    </div>
-                                </div>
-                                <div class="mb-3">
-                                    <label for="nameOnCard" class="form-label">Name on Card</label>
-                                    <input type="text" class="form-control" id="nameOnCard" placeholder="John Doe" required>
-                                </div>
-                            </form>
-                        </div>
-                        
-                        <div id="paypalForm" style="display: none;">
-                            <p>You will be redirected to PayPal to complete your payment.</p>
-                        </div>
-                        
-                        <button type="submit" class="btn btn-primary w-100" id="submitPayment">Pay Now</button>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Success Modal -->
-        <div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header bg-success text-white">
-                        <h5 class="modal-title" id="successModalLabel">Order Successful!</h5>
-                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body text-center">
-                        <i class="bi bi-check-circle-fill text-success display-4 mb-3"></i>
-                        <p>Thank you for your purchase! Your order has been placed successfully.</p>
-                        <p>An email confirmation has been sent to your registered email address.</p>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <a href="index.html" class="btn btn-success">Back to Home</a>
-                    </div>
+        <!-- Custom Confirmation Modal -->
+        <div id="custom-confirm-modal" class="custom-modal-overlay d-none">
+            <div class="custom-modal-content">
+                <p id="confirm-message" class="lead fw-semibold mb-4"></p>
+                <div class="custom-modal-buttons">
+                    <button id="confirm-yes" class="custom-modal-button confirm">Yes</button>
+                    <button id="confirm-no" class="custom-modal-button cancel">No</button>
                 </div>
             </div>
         </div>
+
+        <!-- Admin Password Modal -->
+        <div id="admin-password-modal" class="custom-modal-overlay d-none">
+            <div class="custom-modal-content">
+                <h5 class="mb-3">Enter Admin Password</h5>
+                <input type="password" id="admin-password-input" class="form-control mb-3" placeholder="Password">
+                <p id="password-error" class="text-danger small mb-3 d-none">Incorrect password. Please try again.</p>
+                <div class="custom-modal-buttons">
+                    <button id="admin-login-btn" class="custom-modal-button confirm">Login</button>
+                    <button id="admin-cancel-btn" class="custom-modal-button cancel">Cancel</button>
+                </div>
+            </div>
+        </div>
+
 
         <!-- JAVASCRIPT FILES -->
-        <script src="js/jquery.min.js"></script>
-        <script src="js/bootstrap.bundle.min.js"></script>
-        <script src="js/Headroom.js"></script>
-        <script src="js/jQuery.headroom.js"></script>
-        <script src="js/slick.min.js"></script>
-        <script src="js/custom.js"></script>
+        <script src="https://code.jquery.com/jquery-3.7.0.min.js" integrity="sha256-2Pmvv0kuTBOenSvLm6bvfWGaTRtS7PMXnmmKxowXqOq8=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" xintegrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigF/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+        <!-- Retain custom.js if it contains other necessary functionalities for the template -->
+        <!-- <script src="js/custom.js"></script> --> 
 
         <script>
-        // Product data
-        const products = [
-            {
-                id: 'bb1',
-                category: 'bb',
-                name: 'CLINIQUE',
-                title: 'Moisture Surge™ CC Cream Hydrating Color Corrector Broad Spectrum SPF 30',
-                price: 44.00,
-                image: 'img/bb/1.png',
-                description: 'A hydrating color corrector with SPF 30 protection that instantly hydrates while perfecting skin tone.',
-                details: 'Oil-free formula provides sheer-to-medium coverage while improving skin hydration over time. Contains hyaluronic acid and aloe water for 24-hour hydration.'
-            },
-            {
-                id: 'bb2',
-                category: 'bb',
-                name: 'IT Cosmetics',
-                title: 'CC+ Cream Illumination with SPF 50+',
-                price: 47.00,
-                image: 'img/bb/2.png',
-                description: 'Illuminating color corrector with SPF 50+ that brightens skin while providing full coverage.',
-                details: 'Infused with hydrolyzed collagen, peptides, niacin, hyaluronic acid, vitamins and antioxidants. Provides anti-aging benefits while covering imperfections.'
-            },
-            {
-                id: 'bb3',
-                category: 'bb',
-                name: 'tarte',
-                title: 'mini BB blur natural matte tinted moisturizer Broad Spectrum SPF 30 Sunscreen',
-                price: 18.00,
-                image: 'img/bb/3.png',
-                description: 'Mini matte-finish BB cream with SPF 30 that blurs imperfections.',
-                details: 'Oil-free formula minimizes pores and shine while providing natural-looking coverage. Contains Amazonian clay to balance skin.'
-            },
-            {
-                id: 'bb4',
-                category: 'bb',
-                name: 'Laura Mercier',
-                title: 'Mini Long-Wear Tinted Moisturizer Natural Dewy SPF 30 with Hyaluronic Acid',
-                price: 25.00,
-                image: 'img/bb/4.png',
-                description: 'Lightweight tinted moisturizer with a natural dewy finish and SPF 30.',
-                details: 'Contains hyaluronic acid for hydration and provides buildable coverage with a radiant finish.'
-            },
-            {
-                id: 'concealer1',
-                category: 'concealer',
-                name: 'Tower 28 Beauty',
-                title: 'Swipe All-Over Hydrating Serum Concealer',
-                price: 22.00,
-                image: 'img/conceler/1.png',
-                description: 'Hydrating serum concealer that provides buildable coverage.',
-                details: 'Clean formula with squalane and green tea extract that hydrates while covering dark circles and imperfections.'
-            },
-            {
-                id: 'concealer2',
-                category: 'concealer',
-                name: 'Hourglass',
-                title: 'Vanish™ Airbrush Concealer',
-                price: 38.00,
-                image: 'img/conceler/2.png',
-                description: 'Full-coverage concealer with an airbrush finish.',
-                details: 'Cream-to-powder formula provides waterproof coverage that lasts 16 hours. Blurs imperfections without creasing.'
-            },
-            {
-                id: 'concealer3',
-                category: 'concealer',
-                name: 'NARS',
-                title: 'Radiant Creamy Concealer with Medium Coverage',
-                price: 32.00,
-                image: 'img/conceler/3.png',
-                description: 'Creamy concealer that brightens and corrects with medium coverage.',
-                details: 'Light-diffusing technology minimizes fine lines and wrinkles while providing natural-looking coverage.'
-            },
-            {
-                id: 'face1',
-                category: 'face',
-                name: 'Dieux',
-                title: 'Instant Angel Lipid & Peptide-Rich Moisturizer + Barrier Repair',
-                price: 42.00,
-                image: 'img/face/1.png',
-                description: 'Rich moisturizer that repairs skin barrier with lipids and peptides.',
-                details: 'Contains ceramides, cholesterol, and fatty acids to restore skin barrier. Peptides help with collagen production.'
-            },
-            {
-                id: 'face2',
-                category: 'face',
-                name: 'Dieux',
-                title: 'barrier+ Strengthening and Moisturizing Triple Lipid-Peptide Refillable Cream with B-L3',
-                price: 54.00,
-                image: 'img/face/2.png',
-                description: 'Refillable barrier repair cream with triple lipid technology.',
-                details: 'Clinically shown to strengthen skin barrier in 1 week. Contains patented B-L3 complex for enhanced hydration.'
-            },
-            {
-                id: 'face3',
-                category: 'face',
-                name: 'Tower 28 Beauty',
-                title: 'SOS Daily Skin Barrier Redness Recovery Moisturizer',
-                price: 24.00,
-                image: 'img/face/3.png',
-                description: 'Daily moisturizer that soothes redness and repairs skin barrier.',
-                details: 'Hypochlorous acid formula calms irritation while ceramides and fatty acids strengthen the skin barrier.'
-            },
-            {
-                id: 'night1',
-                category: 'night',
-                name: 'SEPHORA COLLECTION',
-                title: 'Overnight Hydrating Mask',
-                price: 8.00,
-                image: 'img/night/1.png',
-                description: 'Affordable overnight mask that deeply hydrates skin.',
-                details: 'Lightweight gel-cream formula with hyaluronic acid provides intense hydration while you sleep.'
-            },
-            {
-                id: 'night2',
-                category: 'night',
-                name: 'fresh',
-                title: 'Lotus Youth Preserve Radiance Renewal Night Cream',
-                price: 62.00,
-                image: 'img/night/2.png',
-                description: 'Night cream that renews radiance while you sleep.',
-                details: 'Contains super lotus extract and vitamin E to help skin recover overnight. Leaves skin glowing by morning.'
-            },
-            {
-                id: 'night3',
-                category: 'night',
-                name: 'Tatcha',
-                title: 'Indigo Overnight Repair Redness Reducing Barrier Cream',
-                price: 92.00,
-                image: 'img/night/3.png',
-                description: 'Luxury overnight cream that reduces redness and repairs skin barrier.',
-                details: 'Japanese indigo extract soothes irritation while colloidal oatmeal and squalane deeply nourish and repair.'
-            }
-        ];
+            // Helper function to generate a unique ID
+            const generateUniqueId = () => Math.random().toString(36).substring(2, 9);
 
-        // Cart functionality
-        let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-        // Initialize the page
-        document.addEventListener('DOMContentLoaded', function() {
-            // Load products
-            filterProducts('all');
-            updateCartCount();
-            
-            // Set up event listeners
-            setupEventListeners();
-        });
-
-        // Function to add to cart
-        function addToCart(productId, quantity = 1) {
-            const product = products.find(p => p.id === productId);
-            if (!product) return;
-
-            const existingItem = cart.find(item => item.id === productId);
-            
-            if (existingItem) {
-                existingItem.quantity += quantity;
-            } else {
-                cart.push({
-                    id: product.id,
-                    name: product.name,
-                    title: product.title,
-                    price: product.price,
-                    image: product.image,
-                    quantity: quantity
-                });
-            }
-            
-            saveCart();
-            updateCartCount();
-            
-            // Show toast notification
-            showToast(`${product.name} added to cart!`);
-        }
-
-        // Function to remove from cart
-        function removeFromCart(productId) {
-            const productIndex = cart.findIndex(item => item.id === productId);
-            if (productIndex !== -1) {
-                const product = cart[productIndex];
-                cart.splice(productIndex, 1);
-                saveCart();
-                updateCartCount();
-                showToast(`${product.name} removed from cart`, 'warning');
-                updateCartModal();
-            }
-        }
-
-        // Function to update quantity in cart
-        function updateCartItemQuantity(productId, newQuantity) {
-            const cartItem = cart.find(item => item.id === productId);
-            if (cartItem) {
-                if (newQuantity > 0) {
-                    cartItem.quantity = newQuantity;
-                } else {
-                    removeFromCart(productId);
+            // Product data - Modified to include isBoxProduct and boxContents
+            let products = [
+                {
+                    id: 'bb1',
+                    category: 'bb',
+                    name: 'CLINIQUE',
+                    title: 'Moisture Surge™ CC Cream Hydrating Color Corrector Broad Spectrum SPF 30',
+                    price: 44.00,
+                    image: 'https://placehold.co/400x300/a3e635/1c1917?text=Cleanser', // Using placeholder for consistency
+                    description: 'A hydrating color corrector with SPF 30 protection that instantly hydrates while perfecting skin tone.',
+                    details: 'Oil-free formula provides sheer-to-medium coverage while improving skin hydration over time. Contains hyaluronic acid and aloe water for 24-hour hydration.',
+                    stock: 50,
+                    isBoxProduct: false,
+                    boxContents: []
+                },
+                {
+                    id: 'bb2',
+                    category: 'bb',
+                    name: 'IT Cosmetics',
+                    title: 'CC+ Cream Illumination with SPF 50+',
+                    price: 47.00,
+                    image: 'https://placehold.co/400x300/fde047/1c1917?text=Serum',
+                    description: 'Illuminating color corrector with SPF 50+ that brightens skin while providing full coverage.',
+                    details: 'Infused with hydrolyzed collagen, peptides, niacin, hyaluronic acid, vitamins and antioxidants. Provides anti-aging benefits while covering imperfections.',
+                    stock: 30,
+                    isBoxProduct: false,
+                    boxContents: []
+                },
+                {
+                    id: 'bb3',
+                    category: 'bb',
+                    name: 'tarte',
+                    title: 'mini BB blur natural matte tinted moisturizer Broad Spectrum SPF 30 Sunscreen',
+                    price: 18.00,
+                    image: 'https://placehold.co/400x300/60a5fa/1c1917?text=Cream',
+                    description: 'Mini matte-finish BB cream with SPF 30 that blurs imperfections.',
+                    details: 'Oil-free formula minimizes pores and shine while providing natural-looking coverage. Contains Amazonian clay to balance skin.',
+                    stock: 40,
+                    isBoxProduct: false,
+                    boxContents: []
+                },
+                {
+                    id: 'bb4',
+                    category: 'bb',
+                    name: 'Laura Mercier',
+                    title: 'Mini Long-Wear Tinted Moisturizer Natural Dewy SPF 30 with Hyaluronic Acid',
+                    price: 25.00,
+                    image: 'https://placehold.co/400x300/d8b4fe/1c1917?text=Starter+Kit',
+                    description: 'Lightweight tinted moisturizer with a natural dewy finish and SPF 30.',
+                    details: 'Contains hyaluronic acid for hydration and provides buildable coverage with a radiant finish.',
+                    stock: 15,
+                    isBoxProduct: true, // Example box product
+                    boxContents: ['bb1', 'concealer1', 'face1'] // Reference by ID
+                },
+                {
+                    id: 'concealer1',
+                    category: 'concealer',
+                    name: 'Tower 28 Beauty',
+                    title: 'Swipe All-Over Hydrating Serum Concealer',
+                    price: 22.00,
+                    image: 'https://placehold.co/400x300/a3e635/1c1917?text=Concealer',
+                    description: 'Hydrating serum concealer that provides buildable coverage.',
+                    details: 'Clean formula with squalane and green tea extract that hydrates while covering dark circles and imperfections.',
+                    stock: 25,
+                    isBoxProduct: false,
+                    boxContents: []
+                },
+                {
+                    id: 'concealer2',
+                    category: 'concealer',
+                    name: 'Hourglass',
+                    title: 'Vanish™ Airbrush Concealer',
+                    price: 38.00,
+                    image: 'https://placehold.co/400x300/fde047/1c1917?text=Concealer',
+                    description: 'Full-coverage concealer with an airbrush finish.',
+                    details: 'Cream-to-powder formula provides waterproof coverage that lasts 16 hours. Blurs imperfections without creasing.',
+                    stock: 20,
+                    isBoxProduct: false,
+                    boxContents: []
+                },
+                {
+                    id: 'concealer3',
+                    category: 'concealer',
+                    name: 'NARS',
+                    title: 'Radiant Creamy Concealer with Medium Coverage',
+                    price: 32.00,
+                    image: 'https://placehold.co/400x300/60a5fa/1c1917?text=Concealer',
+                    description: 'Creamy concealer that brightens and corrects with medium coverage.',
+                    details: 'Light-diffusing technology minimizes fine lines and wrinkles while providing natural-looking coverage.',
+                    stock: 35,
+                    isBoxProduct: false,
+                    boxContents: []
+                },
+                {
+                    id: 'face1',
+                    category: 'face',
+                    name: 'Dieux',
+                    title: 'Instant Angel Lipid & Peptide-Rich Moisturizer + Barrier Repair',
+                    price: 42.00,
+                    image: 'https://placehold.co/400x300/d8b4fe/1c1917?text=Face+Cream',
+                    description: 'Rich moisturizer that repairs skin barrier with lipids and peptides.',
+                    details: 'Contains ceramides, cholesterol, and fatty acids to restore skin barrier. Peptides help with collagen production.',
+                    stock: 30,
+                    isBoxProduct: false,
+                    boxContents: []
+                },
+                {
+                    id: 'face2',
+                    category: 'face',
+                    name: 'Dieux',
+                    title: 'barrier+ Strengthening and Moisturizing Triple Lipid-Peptide Refillable Cream with B-L3',
+                    price: 54.00,
+                    image: 'https://placehold.co/400x300/a3e635/1c1917?text=Face+Cream',
+                    description: 'Refillable barrier repair cream with triple lipid technology.',
+                    details: 'Clinically shown to strengthen skin barrier in 1 week. Contains patented B-L3 complex for enhanced hydration.',
+                    stock: 20,
+                    isBoxProduct: false,
+                    boxContents: []
+                },
+                {
+                    id: 'face3',
+                    category: 'face',
+                    name: 'Tower 28 Beauty',
+                    title: 'SOS Daily Skin Barrier Redness Recovery Moisturizer',
+                    price: 24.00,
+                    image: 'https://placehold.co/400x300/fde047/1c1917?text=Face+Cream',
+                    description: 'Daily moisturizer that soothes redness and repairs skin barrier.',
+                    details: 'Hypochlorous acid formula calms irritation while ceramides and fatty acids strengthen the skin barrier.',
+                    stock: 45,
+                    isBoxProduct: false,
+                    boxContents: []
+                },
+                {
+                    id: 'night1',
+                    category: 'night',
+                    name: 'SEPHORA COLLECTION',
+                    title: 'Overnight Hydrating Mask',
+                    price: 8.00,
+                    image: 'https://placehold.co/400x300/60a5fa/1c1917?text=Night+Cream',
+                    description: 'Affordable overnight mask that deeply hydrates skin.',
+                    details: 'Lightweight gel-cream formula with hyaluronic acid provides intense hydration while you sleep.',
+                    stock: 60,
+                    isBoxProduct: false,
+                    boxContents: []
+                },
+                {
+                    id: 'night2',
+                    category: 'night',
+                    name: 'fresh',
+                    title: 'Lotus Youth Preserve Radiance Renewal Night Cream',
+                    price: 62.00,
+                    image: 'https://placehold.co/400x300/d8b4fe/1c1917?text=Night+Cream',
+                    description: 'Night cream that renews radiance while you sleep.',
+                    details: 'Contains super lotus extract and vitamin E to help skin recover overnight. Leaves skin glowing by morning.',
+                    stock: 25,
+                    isBoxProduct: false,
+                    boxContents: []
+                },
+                {
+                    id: 'night3',
+                    category: 'night',
+                    name: 'Tatcha',
+                    title: 'Indigo Overnight Repair Redness Reducing Barrier Cream',
+                    price: 92.00,
+                    image: 'https://placehold.co/400x300/a3e635/1c1917?text=Night+Cream',
+                    description: 'Luxury overnight cream that reduces redness and repairs skin barrier.',
+                    details: 'Japanese indigo extract soothes irritation while colloidal oatmeal and squalane deeply nourish and repair.',
+                    stock: 18,
+                    isBoxProduct: false,
+                    boxContents: []
                 }
-                saveCart();
-                updateCartModal();
-            }
-        }
+            ];
 
-        // Function to save cart to localStorage
-        function saveCart() {
-            localStorage.setItem('cart', JSON.stringify(cart));
-        }
+            // Cart functionality (using localStorage for persistence)
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let isAdminMode = false; // Global flag for admin mode
+            const ADMIN_PASSWORD = '123'; // Admin password
 
-        // Function to update cart count in navbar
-        function updateCartCount() {
-            const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
-            document.querySelectorAll('.bi-bag').forEach(icon => {
-                if (totalItems > 0) {
-                    icon.setAttribute('data-count', totalItems);
-                } else {
-                    icon.removeAttribute('data-count');
-                }
-            });
-        }
+            // DOM Elements
+            const productListElement = document.getElementById('productList');
+            const productDetailView = document.getElementById('productDetailView');
+            const mainProductSection = document.getElementById('main-product-section');
+            const productsListTitle = document.getElementById('products-list-title');
+            const pageHeaderPrimary = document.getElementById('page-header-primary');
+            const pageHeaderSecondary = document.getElementById('page-header-secondary');
+            const userViewControls = document.getElementById('user-view-controls');
 
-        // Function to update cart modal
-        function updateCartModal() {
+            // Product Detail Elements
+            const detailImage = document.getElementById('detail-image');
+            const detailName = document.getElementById('detail-name');
+            const detailCategory = document.getElementById('detail-category');
+            const detailPrice = document.getElementById('detail-price');
+            const detailDescription = document.getElementById('detail-description');
+            const detailDetails = document.getElementById('detail-details');
+            const detailStockStatus = document.getElementById('detail-stock-status');
+            const detailBoxProductInfo = document.getElementById('detail-box-product-info');
+            const detailBoxContents = document.getElementById('detail-box-contents');
+            const addToCartDetailBtn = document.getElementById('add-to-cart-detail-btn');
+            const backFromDetailBtn = document.getElementById('back-from-detail-btn');
+
+            // Admin Elements
+            const toggleAdminModeBtn = document.getElementById('toggle-admin-mode-btn');
+            const addNewProductBtn = document.getElementById('add-new-product-btn');
+            const productFormModal = new bootstrap.Modal(document.getElementById('productFormModal'));
+            const productForm = document.getElementById('productForm');
+            const productFormModalLabel = document.getElementById('productFormModalLabel');
+            const productIdInput = document.getElementById('product-id');
+            const productNameInput = document.getElementById('product-name');
+            const productTitleInput = document.getElementById('product-title');
+            const productDescriptionInput = document.getElementById('product-description');
+            const productDetailsInput = document.getElementById('product-details');
+            const productPriceInput = document.getElementById('product-price');
+            const productStockInput = document.getElementById('product-stock');
+            const productImageInput = document.getElementById('product-image');
+            const productCategoryInput = document.getElementById('product-category');
+            const isBoxProductCheckbox = document.getElementById('is-box-product');
+            const boxContentsGroup = document.getElementById('box-contents-group');
+            const boxContentsInput = document.getElementById('box-contents');
+
+            // Cart Modal Elements
+            const cartModal = document.getElementById('cartModal');
             const cartItemsContainer = document.getElementById('cartItemsContainer');
             const emptyCartMessage = document.getElementById('emptyCartMessage');
             const cartSummary = document.getElementById('cartSummary');
-            
-            cartItemsContainer.innerHTML = '';
-            
-            if (cart.length === 0) {
-                emptyCartMessage.style.display = 'block';
-                cartSummary.style.display = 'none';
-            } else {
-                emptyCartMessage.style.display = 'none';
-                cartSummary.style.display = 'block';
-                
-                let subtotal = 0;
-                
-                cart.forEach(item => {
-                    const itemTotal = item.price * item.quantity;
-                    subtotal += itemTotal;
-                    
-                    const itemElement = document.createElement('div');
-                    itemElement.className = 'row mb-3 align-items-center';
-                    itemElement.innerHTML = `
-                        <div class="col-3 col-md-2">
-                            <img src="${item.image}" class="img-fluid cart-item-img" alt="${item.title}">
-                        </div>
-                        <div class="col-5 col-md-6">
-                            <h6 class="mb-1">${item.name}</h6>
-                            <p class="mb-1 small text-muted">${item.title}</p>
-                            <p class="mb-0">$${item.price.toFixed(2)}</p>
-                        </div>
-                        <div class="col-4 col-md-4">
-                            <div class="d-flex align-items-center justify-content-end">
-                                <div class="quantity-control">
-                                    <button class="quantity-btn minus-btn" data-id="${item.id}">-</button>
-                                    <input type="number" class="quantity-input" value="${item.quantity}" min="1" data-id="${item.id}">
-                                    <button class="quantity-btn plus-btn" data-id="${item.id}">+</button>
-                                </div>
-                                <button class="btn btn-link text-danger remove-btn ms-2" data-id="${item.id}">
-                                    <i class="bi bi-trash"></i>
-                                </button>
-                            </div>
-                            <div class="text-end mt-2">
-                                <strong>$${itemTotal.toFixed(2)}</strong>
-                            </div>
-                        </div>
-                    `;
-                    
-                    cartItemsContainer.appendChild(itemElement);
-                });
-                
-                // Update totals
-                document.getElementById('cartSubtotal').textContent = `$${subtotal.toFixed(2)}`;
-                document.getElementById('cartTotal').textContent = `$${subtotal.toFixed(2)}`;
-                
-                // Add event listeners to quantity controls
-                document.querySelectorAll('.minus-btn').forEach(button => {
-                    button.addEventListener('click', function() {
-                        const productId = this.getAttribute('data-id');
-                        const input = this.nextElementSibling;
-                        let newQuantity = parseInt(input.value) - 1;
-                        if (newQuantity < 1) newQuantity = 1;
-                        input.value = newQuantity;
-                        updateCartItemQuantity(productId, newQuantity);
-                    });
-                });
-                
-                document.querySelectorAll('.plus-btn').forEach(button => {
-                    button.addEventListener('click', function() {
-                        const productId = this.getAttribute('data-id');
-                        const input = this.previousElementSibling;
-                        const newQuantity = parseInt(input.value) + 1;
-                        input.value = newQuantity;
-                        updateCartItemQuantity(productId, newQuantity);
-                    });
-                });
-                
-                document.querySelectorAll('.quantity-input').forEach(input => {
-                    input.addEventListener('change', function() {
-                        const productId = this.getAttribute('data-id');
-                        const newQuantity = parseInt(this.value) || 1;
-                        this.value = newQuantity;
-                        updateCartItemQuantity(productId, newQuantity);
-                    });
-                });
-                
-                document.querySelectorAll('.remove-btn').forEach(button => {
-                    button.addEventListener('click', function() {
-                        const productId = this.getAttribute('data-id');
-                        removeFromCart(productId);
-                    });
-                });
-            }
-        }
+            const cartSubtotal = document.getElementById('cartSubtotal');
+            const cartTotal = document.getElementById('cartTotal');
+            const checkoutBtn = document.getElementById('checkoutBtn');
 
-        // Function to filter products
-        function filterProducts(category, searchTerm = '') {
-            const container = document.getElementById('productList');
-            container.innerHTML = ''; // Clear existing products
-            
-            // Create header for the product list
-            const headerCol = document.createElement('div');
-            headerCol.className = 'col-12';
-            headerCol.innerHTML = '<h2 class="mb-5">Our Products</h2>';
-            container.appendChild(headerCol);
-            
-            // Filter products based on category and search term
-            const filteredProducts = products.filter(product => {
-                const matchesCategory = category === 'all' || product.category === category;
-                const matchesSearch = searchTerm === '' || 
-                    product.name.toLowerCase().includes(searchTerm.toLowerCase()) || 
-                    product.title.toLowerCase().includes(searchTerm.toLowerCase()) ||
-                    product.description.toLowerCase().includes(searchTerm.toLowerCase());
-                return matchesCategory && matchesSearch;
-            });
-            
-            // Display filtered products
-            if (filteredProducts.length === 0) {
-                const noProductsCol = document.createElement('div');
-                noProductsCol.className = 'col-12 text-center py-5';
-                noProductsCol.innerHTML = '<div class="alert alert-info">No products found matching your criteria. Try a different search term or filter.</div>';
-                container.appendChild(noProductsCol);
-            } else {
-                filteredProducts.forEach(product => {
-                    const productCol = document.createElement('div');
-                    productCol.className = 'col-lg-4 col-md-6 col-12 mb-4 product-item';
-                    productCol.setAttribute('data-category', product.category);
-                    productCol.setAttribute('data-id', product.id);
-                    
-                    productCol.innerHTML = `
+            // Custom Confirmation Modal
+            const customConfirmModal = document.getElementById('custom-confirm-modal');
+            const confirmMessage = document.getElementById('confirm-message');
+            const confirmYesBtn = document.getElementById('confirm-yes');
+            const confirmNoBtn = document.getElementById('confirm-no');
+            let confirmCallback = null;
+
+            // Admin Password Modal Elements
+            const adminPasswordModal = document.getElementById('admin-password-modal');
+            const adminPasswordInput = document.getElementById('admin-password-input');
+            const passwordError = document.getElementById('password-error');
+            const adminLoginBtn = document.getElementById('admin-login-btn');
+            const adminCancelBtn = document.getElementById('admin-cancel-btn');
+
+
+            // --- Core Functions ---
+
+            // Custom Confirmation Modal Function (replaces alert/confirm)
+            function showConfirm(message, callback) {
+                confirmMessage.textContent = message;
+                confirmCallback = callback;
+                customConfirmModal.classList.remove('d-none');
+            }
+
+            function hideConfirm() {
+                customConfirmModal.classList.add('d-none');
+                confirmCallback = null;
+            }
+
+            // Function to show the admin password prompt
+            function showAdminPasswordPrompt() {
+                adminPasswordInput.value = ''; // Clear previous input
+                passwordError.classList.add('d-none'); // Hide error message
+                adminPasswordModal.classList.remove('d-none');
+                adminPasswordInput.focus(); // Focus on the input field
+            }
+
+            // Function to hide the admin password prompt
+            function hideAdminPasswordPrompt() {
+                adminPasswordModal.classList.add('d-none');
+            }
+
+            // Function to render product list
+            function renderProducts(filteredProducts = products) {
+                productListElement.innerHTML = `
+                    <div class="col-12" id="products-list-header-col">
+                        <h2 class="mb-5" id="products-list-title">${isAdminMode ? 'Admin Product Management' : 'Our Products'}</h2>
+                    </div>
+                `; // Clear current products and re-add header
+
+                // Get deleted product IDs from localStorage
+                let deletedProducts = JSON.parse(localStorage.getItem('deletedProducts') || '[]');
+                
+                // Filter out products marked as deleted
+                let productsToDisplay = (filteredProducts || products).filter(p => !deletedProducts.includes(p.id));
+
+                if (productsToDisplay.length === 0) {
+                    const noProductsMsg = document.createElement('div');
+                    noProductsMsg.className = 'col-12 text-center text-muted';
+                    noProductsMsg.textContent = 'No products found.';
+                    productListElement.appendChild(noProductsMsg);
+                    return;
+                }
+
+                productsToDisplay.forEach(product => {
+                    const colDiv = document.createElement('div');
+                    colDiv.className = 'col-lg-4 col-md-6 col-12';
+                    colDiv.innerHTML = `
                         <div class="product-thumb">
-                            <a href="product-detail.html?id=${product.id}">
-                                <img src="${product.image}" class="img-fluid product-image" alt="${product.title}">
+                            <a href="#" class="product-image-wrap" data-id="${product.id}">
+                                <img src="${product.image}" class="img-fluid product-image" alt="${product.title}" onerror="this.onerror=null;this.src='https://placehold.co/400x300/a3a3a3/ffffff?text=Image+Not+Found';">
                             </a>
-                            <div class="product-top d-flex">
-                                <span class="product-alert">New Arrival</span>
-                                <a href="#" class="bi-heart-fill product-icon ms-auto"></a>
-                            </div>
                             <div class="product-info d-flex">
-                                <div>
-                                    <h5 class="product-title mb-0">
-                                        <a href="product-detail.html?id=${product.id}" class="product-title-link">${product.name}</a>
-                                    </h5>
-                                    <p class="product-p">${product.title}</p>
+                                <div class="product-title-wrap">
+                                    <h4 class="product-title mb-0">
+                                        <a href="#" class="product-title-link" data-id="${product.id}">${product.title}</a>
+                                    </h4>
+                                    <p class="product-p">${product.name}</p>
+                                    ${product.isBoxProduct ? '<span class="badge bg-info text-dark rounded-pill px-3 py-2">Box Product</span>' : ''}
                                 </div>
-                                <small class="product-price text-muted ms-auto">$${product.price.toFixed(2)}</small>
+                                <div class="product-price-wrap">
+                                    <p class="product-price text-muted mb-0">$${product.price.toFixed(2)}</p>
+                                    ${isAdminMode ? `
+                                        <button class="btn btn-warning btn-sm mt-2 edit-product-btn" data-id="${product.id}">
+                                            <i class="bi bi-pencil"></i> Edit
+                                        </button>
+                                        <button class="btn btn-danger btn-sm mt-2 delete-product-btn" data-id="${product.id}">
+                                            <i class="bi bi-trash"></i> Delete
+                                        </button>
+                                    ` : `
+                                        <button class="btn btn-primary btn-sm mt-2 add-to-cart-btn" data-id="${product.id}">
+                                            <i class="bi bi-cart-plus"></i> Add to Cart
+                                        </button>
+                                    `}
+                                </div>
                             </div>
-                        </div>
-                        <div class="d-grid mt-2">
-                            <button class="btn btn-primary add-to-cart-btn" data-id="${product.id}">Add to Cart</button>
-                            <button class="btn btn-outline-primary buy-now-btn mt-2" data-id="${product.id}">Buy Now</button>
                         </div>
                     `;
-                    
-                    container.appendChild(productCol);
+                    productListElement.appendChild(colDiv);
                 });
 
-                // Add event listeners to the new buttons
-                document.querySelectorAll('.add-to-cart-btn').forEach(button => {
-                    button.addEventListener('click', function() {
-                        const productId = this.getAttribute('data-id');
-                        addToCart(productId);
-                    });
-                });
+                // Attach event listeners after rendering
+                attachProductEventListeners();
+            }
 
-                document.querySelectorAll('.buy-now-btn').forEach(button => {
-                    button.addEventListener('click', function() {
-                        const productId = this.getAttribute('data-id');
-                        addToCart(productId);
-                        showPaymentModal(productId);
-                    });
-                });
-                
-                // Add wishlist functionality
-                document.querySelectorAll('.product-icon').forEach(icon => {
-                    icon.addEventListener('click', function(e) {
+            function attachProductEventListeners() {
+                // View Details / Image Link
+                productListElement.querySelectorAll('.product-image-wrap, .product-title-link').forEach(link => {
+                    link.addEventListener('click', (e) => {
                         e.preventDefault();
-                        const productId = this.closest('.product-item').getAttribute('data-id');
-                        toggleWishlist(productId);
-                    });
-                });
-            }
-        }
-
-        // Function to show payment modal
-        function showPaymentModal(selectedProductId = null) {
-            let itemsToShow = [];
-            let total = 0;
-            
-            if (selectedProductId) {
-                // Show only the selected product (for "Buy Now" button)
-                const selectedProduct = cart.find(item => item.id === selectedProductId);
-                if (selectedProduct) {
-                    itemsToShow.push(selectedProduct);
-                    total = selectedProduct.price * selectedProduct.quantity;
-                }
-            } else {
-                // Show all cart items (for checkout from cart)
-                itemsToShow = [...cart];
-                total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            }
-
-            if (itemsToShow.length === 0) {
-                showToast('No products selected!', 'danger');
-                return;
-            }
-
-            const paymentItemsContainer = document.getElementById('paymentItems');
-            paymentItemsContainer.innerHTML = '';
-            
-            itemsToShow.forEach(item => {
-                const itemTotal = item.price * item.quantity;
-                
-                // Add item to payment modal
-                const itemElement = document.createElement('div');
-                itemElement.className = 'd-flex justify-content-between mb-3 align-items-center';
-                itemElement.innerHTML = `
-                    <div class="d-flex align-items-center">
-                        <img src="${item.image}" class="img-thumbnail me-3" style="width: 60px; height: 60px; object-fit: contain;" alt="${item.title}">
-                    </div>
-                                            <div>
-                            <h6 class="mb-0">${item.name}</h6>
-                            <small class="text-muted">${item.title}</small>
-                        </div>
-                    </div>
-                    <div class="text-end">
-                        <div>${item.quantity} × $${item.price.toFixed(2)}</div>
-                        <strong>$${itemTotal.toFixed(2)}</strong>
-                    </div>
-                `;
-                paymentItemsContainer.appendChild(itemElement);
-            });
-
-            // Update total in payment modal
-            document.getElementById('paymentTotal').textContent = `$${total.toFixed(2)}`;
-
-            // Show the payment modal
-            const paymentModal = new bootstrap.Modal(document.getElementById('paymentModal'));
-            paymentModal.show();
-        }
-
-        // Function to toggle wishlist
-        function toggleWishlist(productId) {
-            let wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
-            const index = wishlist.indexOf(productId);
-            
-            if (index === -1) {
-                wishlist.push(productId);
-                showToast('Added to wishlist!');
-            } else {
-                wishlist.splice(index, 1);
-                showToast('Removed from wishlist', 'warning');
-            }
-            
-            localStorage.setItem('wishlist', JSON.stringify(wishlist));
-            updateWishlistIcons();
-        }
-
-        // Function to update wishlist icons
-        function updateWishlistIcons() {
-            const wishlist = JSON.parse(localStorage.getItem('wishlist')) || [];
-            document.querySelectorAll('.product-icon').forEach(icon => {
-                const productId = icon.closest('.product-item').getAttribute('data-id');
-                if (wishlist.includes(productId)) {
-                    icon.classList.add('text-danger');
-                    icon.classList.remove('text-muted');
-                } else {
-                    icon.classList.remove('text-danger');
-                    icon.classList.add('text-muted');
-                }
-            });
-        }
-
-        // Function to show toast notifications
-        function showToast(message, type = 'success') {
-            // Create toast element
-            const toast = document.createElement('div');
-            toast.className = `toast align-items-center text-white bg-${type} border-0 position-fixed bottom-0 end-0 m-3`;
-            toast.setAttribute('role', 'alert');
-            toast.setAttribute('aria-live', 'assertive');
-            toast.setAttribute('aria-atomic', 'true');
-            toast.style.zIndex = '1100';
-            
-            toast.innerHTML = `
-                <div class="d-flex">
-                    <div class="toast-body">
-                        ${message}
-                    </div>
-                    <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-                </div>
-            `;
-            
-            document.body.appendChild(toast);
-            
-            // Initialize and show toast
-            const bsToast = new bootstrap.Toast(toast);
-            bsToast.show();
-            
-            // Remove toast after it's hidden
-            toast.addEventListener('hidden.bs.toast', function() {
-                toast.remove();
-            });
-        }
-
-        // Function to setup event listeners
-        function setupEventListeners() {
-            // Filter buttons
-            document.querySelectorAll('.filter-btn').forEach(button => {
-                button.addEventListener('click', function() {
-                    document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-                    this.classList.add('active');
-                    const filter = this.getAttribute('data-filter');
-                    filterProducts(filter);
-                });
-            });
-            
-            // Search functionality
-            document.getElementById('searchButton').addEventListener('click', function() {
-                const searchTerm = document.getElementById('productSearch').value;
-                const activeFilter = document.querySelector('.filter-btn.active').getAttribute('data-filter');
-                filterProducts(activeFilter, searchTerm);
-            });
-            
-            document.getElementById('productSearch').addEventListener('keypress', function(e) {
-                if (e.key === 'Enter') {
-                    const searchTerm = this.value;
-                    const activeFilter = document.querySelector('.filter-btn.active').getAttribute('data-filter');
-                    filterProducts(activeFilter, searchTerm);
-                }
-            });
-            
-            // Cart modal events
-            document.querySelectorAll('[data-bs-target="#cartModal"]').forEach(button => {
-                button.addEventListener('click', updateCartModal);
-            });
-            
-            // Payment method selection
-            document.getElementById('creditCardOption').addEventListener('click', function() {
-                document.getElementById('creditCardForm').style.display = 'block';
-                document.getElementById('paypalForm').style.display = 'none';
-                document.getElementById('creditCard').checked = true;
-                this.classList.add('active');
-                document.getElementById('paypalOption').classList.remove('active');
-            });
-            
-            document.getElementById('paypalOption').addEventListener('click', function() {
-                document.getElementById('creditCardForm').style.display = 'none';
-                document.getElementById('paypalForm').style.display = 'block';
-                document.getElementById('paypal').checked = true;
-                this.classList.add('active');
-                document.getElementById('creditCardOption').classList.remove('active');
-            });
-            
-            // Submit payment
-            document.getElementById('submitPayment').addEventListener('click', function() {
-                // Validate forms
-                const shippingForm = document.getElementById('shippingForm');
-                const paymentForm = document.getElementById('paymentForm');
-                
-                let isValid = true;
-                
-                // Validate shipping form
-                shippingForm.querySelectorAll('[required]').forEach(input => {
-                    if (!input.value.trim()) {
-                        input.classList.add('is-invalid');
-                        isValid = false;
-                    } else {
-                        input.classList.remove('is-invalid');
-                    }
-                });
-                
-                // Validate payment form if credit card is selected
-                if (document.getElementById('creditCard').checked) {
-                    paymentForm.querySelectorAll('[required]').forEach(input => {
-                        if (!input.value.trim()) {
-                            input.classList.add('is-invalid');
-                            isValid = false;
-                        } else {
-                            input.classList.remove('is-invalid');
+                        const productId = e.currentTarget.dataset.id;
+                        const product = products.find(p => p.id === productId);
+                        if (product) {
+                            renderProductDetail(product);
                         }
                     });
-                    
-                    // Simple credit card validation
-                    const cardNumber = document.getElementById('cardNumber').value.replace(/\s/g, '');
-                    if (!/^\d{16}$/.test(cardNumber)) {
-                        document.getElementById('cardNumber').classList.add('is-invalid');
-                        isValid = false;
-                    }
-                    
-                    // Expiry date validation
-                    const expiryDate = document.getElementById('expiryDate').value;
-                    if (!/^\d{2}\/\d{2}$/.test(expiryDate)) {
-                        document.getElementById('expiryDate').classList.add('is-invalid');
-                        isValid = false;
-                    }
-                    
-                    // CVV validation
-                    const cvv = document.getElementById('cvv').value;
-                    if (!/^\d{3,4}$/.test(cvv)) {
-                        document.getElementById('cvv').classList.add('is-invalid');
-                        isValid = false;
-                    }
+                });
+
+                // Add to Cart
+                productListElement.querySelectorAll('.add-to-cart-btn').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        const productId = e.currentTarget.dataset.id;
+                        addToCart(productId);
+                    });
+                });
+
+                // Edit Product
+                productListElement.querySelectorAll('.edit-product-btn').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        const productId = e.currentTarget.dataset.id;
+                        const product = products.find(p => p.id === productId);
+                        if (product) {
+                            openProductFormModal(product);
+                        }
+                    });
+                });
+
+                // Delete Product
+                productListElement.querySelectorAll('.delete-product-btn').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        const productIdToDelete = e.currentTarget.dataset.id;
+                        const productToDelete = products.find(p => p.id === productIdToDelete);
+                        showConfirm(`Are you sure you want to delete "${productToDelete.title}"?`, (confirmed) => {
+                            if (confirmed) {
+                                // Add product ID to deletedProducts in localStorage
+                                let deletedProducts = JSON.parse(localStorage.getItem('deletedProducts') || '[]');
+                                if (!deletedProducts.includes(productIdToDelete)) {
+                                    deletedProducts.push(productIdToDelete);
+                                    localStorage.setItem('deletedProducts', JSON.stringify(deletedProducts));
+                                }
+                                
+                                // Remove from the in-memory products array
+                                products = products.filter(p => p.id !== productIdToDelete);
+                                renderProducts(); // Re-render after deletion
+                            }
+                            hideConfirm();
+                        });
+                    });
+                });
+            }
+
+            // Function to render product detail view
+            function renderProductDetail(product) {
+                detailImage.src = product.image;
+                detailImage.onerror = () => { detailImage.src = 'https://placehold.co/600x450/a3a3a3/ffffff?text=Image+Not+Found'; };
+                detailName.textContent = product.title;
+                detailCategory.textContent = product.name; // Using 'name' from data as category for detail view
+                detailPrice.textContent = `$${product.price.toFixed(2)}`;
+                detailDescription.textContent = product.description;
+                detailDetails.textContent = product.details;
+                detailStockStatus.textContent = product.stock > 0 ? `In Stock: ${product.stock}` : 'Out of Stock';
+                detailStockStatus.className = product.stock > 0 ? 'card-text small text-success' : 'card-text small text-danger';
+
+                if (product.isBoxProduct) {
+                    detailBoxProductInfo.classList.remove('d-none');
+                    const containedProductNames = product.boxContents.map(id => {
+                        const containedProduct = products.find(p => p.id === id);
+                        return containedProduct ? containedProduct.title : `Unknown Product (${id})`;
+                    }).join(', ');
+                    detailBoxContents.textContent = `Contains: ${containedProductNames}`;
+                } else {
+                    detailBoxProductInfo.classList.add('d-none');
+                }
+
+                // Hide/Show Add to Cart based on admin mode
+                if (isAdminMode) {
+                    addToCartDetailBtn.classList.add('d-none');
+                    backFromDetailBtn.textContent = 'Back to Admin List';
+                } else {
+                    addToCartDetailBtn.classList.remove('d-none');
+                    addToCartDetailBtn.textContent = 'Add to Cart';
+                    addToCartDetailBtn.onclick = () => {
+                        addToCart(product.id);
+                        // Optionally close detail view and go back to list
+                        renderProducts();
+                        productDetailView.classList.add('d-none');
+                        productListElement.classList.remove('d-none');
+                    };
+                    backFromDetailBtn.textContent = 'Back to Products';
+                }
+
+                backFromDetailBtn.onclick = () => {
+                    productDetailView.classList.add('d-none');
+                    productListElement.classList.remove('d-none');
+                    renderProducts(); // Re-render to ensure correct mode view
+                };
+
+                productListElement.classList.add('d-none');
+                productDetailView.classList.remove('d-none');
+            }
+
+
+            // --- Cart Functions ---
+
+            function addToCart(productId, quantity = 1) {
+                const product = products.find(p => p.id === productId);
+                if (!product) return;
+
+                const existingItem = cart.find(item => item.id === product.id);
+                
+                if (existingItem) {
+                    existingItem.quantity += quantity;
+                } else {
+                    cart.push({
+                        id: product.id,
+                        name: product.name,
+                        title: product.title,
+                        price: product.price,
+                        image: product.image,
+                        quantity: quantity
+                    });
                 }
                 
-                if (isValid) {
-                    // Process payment (in a real app, this would be an API call)
-                    setTimeout(() => {
-                        // Close payment modal
-                        const paymentModal = bootstrap.Modal.getInstance(document.getElementById('paymentModal'));
-                        paymentModal.hide();
-                        
-                        // Clear cart
-                        cart = [];
-                        saveCart();
-                        updateCartCount();
-                        
-                        // Show success modal
-                        const successModal = new bootstrap.Modal(document.getElementById('successModal'));
-                        successModal.show();
-                    }, 1500);
-                } else {
-                    showToast('Please fill in all required fields correctly', 'danger');
+                saveCart();
+                updateCartCount();
+                // Instead of toast, you can add a temporary visual confirmation in the future
+            }
+
+            function removeFromCart(productId) {
+                const productIndex = cart.findIndex(item => item.id === productId);
+                if (productIndex !== -1) {
+                    cart.splice(productIndex, 1);
+                    saveCart();
+                    updateCartCount();
+                    updateCartModal();
                 }
+            }
+
+            function updateCartItemQuantity(productId, newQuantity) {
+                const cartItem = cart.find(item => item.id === productId);
+                if (cartItem) {
+                    if (newQuantity > 0) {
+                        cartItem.quantity = newQuantity;
+                    } else {
+                        removeFromCart(productId);
+                    }
+                    saveCart();
+                    updateCartModal();
+                }
+            }
+
+            function saveCart() {
+                localStorage.setItem('cart', JSON.stringify(cart));
+            }
+
+            function updateCartCount() {
+                const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
+                document.querySelectorAll('.bi-bag').forEach(icon => {
+                    if (totalItems > 0) {
+                        icon.setAttribute('data-count', totalItems);
+                    } else {
+                        icon.removeAttribute('data-count');
+                    }
+                });
+            }
+
+            function updateCartModal() {
+                cartItemsContainer.innerHTML = '';
+                
+                if (cart.length === 0) {
+                    emptyCartMessage.style.display = 'block';
+                    cartSummary.style.display = 'none';
+                } else {
+                    emptyCartMessage.style.display = 'none';
+                    cartSummary.style.display = 'block';
+                    
+                    let subtotal = 0;
+                    
+                    cart.forEach(item => {
+                        const itemTotal = item.price * item.quantity;
+                        subtotal += itemTotal;
+                        
+                        const itemElement = document.createElement('div');
+                        itemElement.className = 'd-flex align-items-center mb-3 border-bottom pb-3';
+                        itemElement.innerHTML = `
+                            <img src="${item.image}" class="cart-item-img me-3" alt="${item.title}" onerror="this.onerror=null;this.src='https://placehold.co/100x100/a3a3a3/ffffff?text=Image';">
+                            <div class="flex-grow-1">
+                                <h6 class="mb-1">${item.title}</h6>
+                                <p class="text-muted small mb-0">${item.name}</p>
+                                <p class="text-dark fw-bold mb-0">$${item.price.toFixed(2)}</p>
+                            </div>
+                            <div class="quantity-control me-3">
+                                <button class="quantity-btn btn-sm" data-id="${item.id}" data-action="decrease">-</button>
+                                <input type="number" class="form-control quantity-input" value="${item.quantity}" min="1" data-id="${item.id}">
+                                <button class="quantity-btn btn-sm" data-id="${item.id}" data-action="increase">+</button>
+                            </div>
+                            <button class="btn btn-outline-danger btn-sm remove-from-cart-btn" data-id="${item.id}">
+                                <i class="bi bi-x-lg"></i>
+                            </button>
+                        `;
+                        cartItemsContainer.appendChild(itemElement);
+                    });
+
+                    // Attach event listeners for quantity controls and remove buttons
+                    cartItemsContainer.querySelectorAll('.quantity-btn').forEach(btn => {
+                        btn.addEventListener('click', (e) => {
+                            const productId = e.currentTarget.dataset.id;
+                            const action = e.currentTarget.dataset.action;
+                            const input = cartItemsContainer.querySelector(`.quantity-input[data-id="${productId}"]`);
+                            let newQuantity = parseInt(input.value);
+
+                            if (action === 'increase') {
+                                newQuantity++;
+                            } else if (action === 'decrease') {
+                                newQuantity--;
+                            }
+                            updateCartItemQuantity(productId, newQuantity);
+                        });
+                    });
+
+                    cartItemsContainer.querySelectorAll('.quantity-input').forEach(input => {
+                        input.addEventListener('change', (e) => {
+                            const productId = e.currentTarget.dataset.id;
+                            const newQuantity = parseInt(e.currentTarget.value);
+                            updateCartItemQuantity(productId, newQuantity);
+                        });
+                    });
+
+                    cartItemsContainer.querySelectorAll('.remove-from-cart-btn').forEach(btn => {
+                        btn.addEventListener('click', (e) => {
+                            const productId = e.currentTarget.dataset.id;
+                            removeFromCart(productId);
+                        });
+                    });
+                    
+                    document.getElementById('cartSubtotal').textContent = `$${subtotal.toFixed(2)}`;
+                    document.getElementById('cartTotal').textContent = `$${subtotal.toFixed(2)}`; // For simplicity, total equals subtotal for now
+                }
+            }
+
+            // --- Admin Panel Functions ---
+
+            // Toggles admin mode UI
+            function toggleAdminMode(loggedIn = false) {
+                if (loggedIn) {
+                    isAdminMode = true;
+                } else {
+                    isAdminMode = !isAdminMode; // Allows switching back from admin mode without password
+                }
+                
+                toggleAdminModeBtn.textContent = isAdminMode ? "Switch to User View" : "Switch to Admin View";
+                addNewProductBtn.classList.toggle('d-none', !isAdminMode);
+                userViewControls.classList.toggle('d-none', isAdminMode); // Hide search/filter in admin mode
+
+                // Adjust page headers
+                if (isAdminMode) {
+                    pageHeaderPrimary.textContent = "Admin";
+                    pageHeaderSecondary.textContent = "Product Management";
+                } else {
+                    pageHeaderPrimary.textContent = "Premium";
+                    pageHeaderSecondary.textContent = "Skincare Collection";
+                }
+                
+                renderProducts(); // Re-render products with appropriate buttons
+                productDetailView.classList.add('d-none'); // Hide detail view if open
+            }
+
+            // Opens the product form modal for adding or editing
+            function openProductFormModal(product = null) {
+                productForm.reset(); // Clear form fields
+                isBoxProductCheckbox.checked = false;
+                boxContentsGroup.classList.add('d-none'); // Hide box contents by default
+
+                if (product) {
+                    productFormModalLabel.textContent = "Edit Product";
+                    productIdInput.value = product.id;
+                    productNameInput.value = product.name;
+                    productTitleInput.value = product.title;
+                    productDescriptionInput.value = product.description;
+                    productDetailsInput.value = product.details;
+                    productPriceInput.value = product.price;
+                    productStockInput.value = product.stock;
+                    productImageInput.value = product.image;
+                    productCategoryInput.value = product.category;
+                    isBoxProductCheckbox.checked = product.isBoxProduct;
+                    if (product.isBoxProduct) {
+                        boxContentsGroup.classList.remove('d-none');
+                        boxContentsInput.value = product.boxContents.join(', ');
+                    }
+                } else {
+                    productFormModalLabel.textContent = "Add New Product";
+                    productIdInput.value = ''; // Ensure new ID for new products
+                }
+                productFormModal.show();
+            }
+
+            // Handles product form submission (Add/Edit)
+            function saveProduct(event) {
+                event.preventDefault(); // Prevent default form submission
+
+                const id = productIdInput.value || null;
+                const name = productNameInput.value.trim();
+                const title = productTitleInput.value.trim();
+                const description = productDescriptionInput.value.trim();
+                const details = productDetailsInput.value.trim();
+                const price = parseFloat(productPriceInput.value);
+                const stock = parseInt(productStockInput.value, 10);
+                const image = productImageInput.value.trim();
+                const category = productCategoryInput.value;
+                const isBoxProduct = isBoxProductCheckbox.checked;
+                const boxContents = isBoxProduct ? boxContentsInput.value.split(',').map(item => item.trim()).filter(item => item !== '') : [];
+
+                // Basic validation
+                if (!name || !title || !description || isNaN(price) || price <= 0 || isNaN(stock) || stock < 0 || !category) {
+                    showConfirm("Please fill in all required fields (Product Name, Title, Description, Category, Price, Stock) and ensure price/stock are valid numbers.", () => hideConfirm());
+                    return;
+                }
+
+                const newProductData = {
+                    id: id,
+                    category: category,
+                    name: name,
+                    title: title,
+                    price: price,
+                    image: image,
+                    description: description,
+                    details: details,
+                    stock: stock,
+                    isBoxProduct: isBoxProduct,
+                    boxContents: boxContents
+                };
+
+                if (id) {
+                    // Update existing product
+                    products = products.map(p => p.id === id ? newProductData : p);
+                } else {
+                    // Add new product
+                    newProductData.id = generateUniqueId(); // Assign new ID
+                    products.push(newProductData);
+                }
+                
+                productFormModal.hide(); // Close modal
+                renderProducts(); // Re-render product list
+            }
+
+
+            // --- Event Listeners Setup ---
+            function setupEventListeners() {
+                // Toggle Admin Mode
+                toggleAdminModeBtn.addEventListener('click', () => {
+                    if (isAdminMode) {
+                        // If currently in admin mode, switch back to user mode directly
+                        toggleAdminMode(false);
+                    } else {
+                        // If currently in user mode, show password prompt
+                        showAdminPasswordPrompt();
+                    }
+                });
+
+                // Admin Login Button
+                adminLoginBtn.addEventListener('click', () => {
+                    const password = adminPasswordInput.value;
+                    if (password === ADMIN_PASSWORD) {
+                        hideAdminPasswordPrompt();
+                        toggleAdminMode(true); // Switch to admin mode on successful login
+                    } else {
+                        passwordError.classList.remove('d-none'); // Show error
+                    }
+                });
+
+                // Admin Password Input - allow Enter key to submit
+                adminPasswordInput.addEventListener('keyup', (e) => {
+                    if (e.key === 'Enter') {
+                        adminLoginBtn.click(); // Simulate click on login button
+                    }
+                });
+
+                // Admin Cancel Button
+                adminCancelBtn.addEventListener('click', hideAdminPasswordPrompt);
+
+                // Add New Product (opens modal)
+                addNewProductBtn.addEventListener('click', () => openProductFormModal());
+
+                // Product Form Submission
+                productForm.addEventListener('submit', saveProduct);
+
+                // Toggle Box Contents field visibility in Product Form Modal
+                isBoxProductCheckbox.addEventListener('change', () => {
+                    boxContentsGroup.classList.toggle('d-none', !isBoxProductCheckbox.checked);
+                });
+
+                // Filter Buttons
+                document.querySelectorAll('.filter-btn').forEach(button => {
+                    button.addEventListener('click', (e) => {
+                        // Remove active class from all filters
+                        document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
+                        // Add active class to the clicked filter
+                        e.currentTarget.classList.add('active');
+                        const filterCategory = e.currentTarget.dataset.filter;
+                        filterProducts(filterCategory);
+                    });
+                });
+
+                // Product Search
+                const productSearchInput = document.getElementById('productSearch');
+                const searchButton = document.getElementById('searchButton');
+
+                productSearchInput.addEventListener('keyup', (e) => {
+                    if (e.key === 'Enter') {
+                        performSearch();
+                    }
+                });
+                searchButton.addEventListener('click', performSearch);
+
+                function performSearch() {
+                    const query = productSearchInput.value.toLowerCase().trim();
+                    const currentFilter = document.querySelector('.filter-btn.active').dataset.filter;
+                    let filtered = products;
+
+                    if (currentFilter !== 'all') {
+                        filtered = filtered.filter(p => p.category === currentFilter);
+                    }
+
+                    if (query) {
+                        filtered = filtered.filter(p =>
+                            p.name.toLowerCase().includes(query) ||
+                            p.title.toLowerCase().includes(query) ||
+                            p.description.toLowerCase().includes(query) ||
+                            p.details.toLowerCase().includes(query)
+                        );
+                    }
+                    renderProducts(filtered);
+                }
+
+                function filterProducts(category) {
+                    let filtered = products;
+                    if (category !== 'all') {
+                        filtered = products.filter(product => product.category === category);
+                    }
+                    renderProducts(filtered);
+                }
+
+                // Cart modal show event (to update content dynamically)
+                cartModal.addEventListener('show.bs.modal', updateCartModal);
+
+                // Custom Confirm Modal button listeners
+                confirmYesBtn.addEventListener('click', () => {
+                    if (confirmCallback) {
+                        confirmCallback(true);
+                    }
+                });
+
+                confirmNoBtn.addEventListener('click', () => {
+                    if (confirmCallback) {
+                        confirmCallback(false);
+                    }
+                });
+            }
+
+            // Initial load
+            document.addEventListener('DOMContentLoaded', function() {
+                renderProducts(); // Render initial products in user mode, filtered by deleted items
+                updateCartCount(); // Initialize cart count in navbar
+                setupEventListeners(); // Setup all event listeners
             });
-            
-            // Checkout button in cart modal
-            document.getElementById('checkoutBtn').addEventListener('click', function() {
-                const cartModal = bootstrap.Modal.getInstance(document.getElementById('cartModal'));
-                cartModal.hide();
-                showPaymentModal();
-            });
-        }
         </script>
     </body>
-</html>	
+</html>
+
+    </body>
+</html>
